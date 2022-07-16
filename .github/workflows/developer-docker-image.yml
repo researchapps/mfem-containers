@@ -2,9 +2,9 @@ name: Build developer image
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"] 
 
 jobs:
 
@@ -14,5 +14,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Run Actions Cleaner
+      uses: rse-ops/actions-cleaner/ubuntu@main
     - name: Build the Docker image
       run: docker build . --file developer/Dockerfile --tag developer:$(date +%s)
